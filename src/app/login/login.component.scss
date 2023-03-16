@@ -1,0 +1,26 @@
+.login-form {
+    display: grid;
+    grid-template-rows: auto;
+    padding: 10rem 0;
+    height: 100vh;
+    overflow: hidden;
+    width: 100%;
+    background: linear-gradient(243.18deg, #54cbff 25.45%, rgba(242, 152, 222, 0) 100%), linear-gradient(243.43deg, #0d5af5 32.96%, rgba(255, 255, 255, 0) 82.03%), #4099ff;
+}
+
+.login-form__form {
+    padding: 5rem;
+    background: #ffffff;
+    width: 25%;
+    min-height: 30rem;
+    height: 100%;
+    margin: 0 auto;
+    border: 1px solid #d9d9d9;
+}
+
+.form__welcome {
+    margin: 0 auto;
+    word-break: break-word;
+    font-size: 2.25rem;
+    text-align: center;
+}
