@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
-import { AuthGuard } from './auth.guard';
+import { AccessAuthGuard } from './access-auth-guard.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { RejectAuthGuardGuard } from './reject-auth-guard.guard';
 
 const routes: Routes = [
     {
@@ -14,16 +15,18 @@ const routes: Routes = [
     {
         path: 'chats',
         component: MainComponent,
-        canActivate: [AuthGuard],
-        canActivateChild: [AuthGuard],
+        canActivate: [AccessAuthGuard],
+        canActivateChild: [AccessAuthGuard],
     },
     {
         path: 'login',
         component: LoginComponent,
+        canActivate: [RejectAuthGuardGuard],
     },
     {
         path: 'sign-up',
         component: SignUpComponent,
+        canActivate: [RejectAuthGuardGuard],
     },
     {
         path: '**',

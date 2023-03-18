@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../main/models/user';
-import { AuthenticationService } from '../authentication.service';
-import { filter } from 'rxjs';
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 interface SignUpForm {
@@ -25,7 +24,7 @@ export class SignUpComponent implements OnInit {
     });
 
     constructor(
-        private authService: AuthenticationService,
+        private authService: AuthService,
         private router: Router,
     ) {}
 
@@ -34,11 +33,9 @@ export class SignUpComponent implements OnInit {
     }
 
     private detectUser(): void {
-        this.authService.user$
-            .pipe(
-                filter(user => !!user),
-            )
-            .subscribe(_ => this.router.navigate(['']));
+        if (this.authService.isLoggedIn()) {
+            this.router.navigate(['']);
+        }
     }
 
 }

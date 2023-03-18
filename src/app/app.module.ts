@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthGuard } from './auth.guard';
+import { AccessAuthGuard } from './access-auth-guard.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
@@ -28,9 +29,11 @@ import { AuthGuard } from './auth.guard';
         BrowserAnimationsModule,
         MatIconModule,
         HttpClientModule,
+        MatButtonModule,
     ],
-    providers: [AuthGuard],
-    bootstrap: [AppComponent]
+    providers: [AccessAuthGuard],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {
 }

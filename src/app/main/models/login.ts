@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export interface LoginDto {
+export interface LoginData {
     username: User['username'];
     password: User['password'];
 }

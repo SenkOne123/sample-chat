@@ -1,5 +1,25 @@
 <div class="login-form">
-    <form [formGroup]="signUpForm" class="login-form__form form">
-        <h1 class="form__welcome">Welcome to @sample-chat!</h1>
-    </form>
+    <div class="login-form__form-wrapper">
+        <mat-icon class="login-form__logo">chat</mat-icon>
+        <h1 class="login-form__welcome">Welcome to Sample Chat</h1>
+        <form class="form" [formGroup]="loginForm">
+            <mat-form-field appearance="outline" class="form__control">
+                <mat-label>Username</mat-label>
+                <input type="text" formControlName="username" matInput placeholder="Enter your username...">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form__control">
+                <mat-label>Password</mat-label>
+                <input type="password" formControlName="password" matInput placeholder="Enter your password...">
+            </mat-form-field>
+            <button
+                (click)="onButtonSubmit()"
+                class="form__submit-button"
+                mat-raised-button
+                color="primary"
+                type="submit"
+            >
+                Login
+            </button>
+        </form>
+    </div>
 </div>
