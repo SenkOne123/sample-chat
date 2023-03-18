@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, filter, Observable, of, tap } from 'rxjs';
-import { User } from './main/models/user';
+import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
-import { LoginData } from './main/models/login';
-import { Token } from './main/models/token';
-import { RegistrationData } from './main/models/registration';
-import { environment } from '../environments/environment';
+import { LoginData } from '../models/login';
+import { Token } from '../models/token';
+import { RegistrationData } from '../models/registration';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'

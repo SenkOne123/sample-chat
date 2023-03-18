@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { MainComponent } from './main/main.component';
-import { AccessAuthGuard } from './access-auth-guard.service';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { RejectAuthGuardGuard } from './reject-auth-guard.guard';
+import { MainComponent } from './modules/main/main.component';
+import { AccessAuthGuard } from './guards/access-auth-guard.service';
 
 const routes: Routes = [
     {
+        path: 'auth',
+        loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
+    },
+    {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'auth',
         pathMatch: 'full',
     },
     {
@@ -17,16 +18,6 @@ const routes: Routes = [
         component: MainComponent,
         canActivate: [AccessAuthGuard],
         canActivateChild: [AccessAuthGuard],
-    },
-    {
-        path: 'login',
-        component: LoginComponent,
-        canActivate: [RejectAuthGuardGuard],
-    },
-    {
-        path: 'sign-up',
-        component: SignUpComponent,
-        canActivate: [RejectAuthGuardGuard],
     },
     {
         path: '**',
@@ -38,4 +29,5 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

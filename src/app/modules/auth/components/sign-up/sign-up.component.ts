@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from '../main/models/user';
-import { AuthService } from '../auth.service';
+import { User } from '../../models/user';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 interface SignUpForm {

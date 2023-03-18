@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { filter, first, map, of, Subject, takeUntil } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from '../main/models/user';
+import { User } from '../../models/user';
 import { Router } from '@angular/router';
-import { LoginData } from '../main/models/login';
+import { LoginData } from '../../models/login';
 
 interface LoginForm {
     username: FormControl<User['username'] | null>;
