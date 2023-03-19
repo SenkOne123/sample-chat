@@ -7,12 +7,15 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AccessAuthGuard } from './guards/access-auth-guard.service';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthModule } from './modules/auth/auth.module';
 import { CommonModule } from '@angular/common';
 import { RejectAuthGuardGuard } from './guards/reject-auth-guard.guard';
+import { SharedModule } from './modules/shared/shared.module';
+import { HandleErrorsInterceptor } from './handle-errors.interceptor';
+import { AuthenticationInterceptor } from './authentication.interceptor';
 
 @NgModule({
     declarations: [
@@ -31,8 +34,22 @@ import { RejectAuthGuardGuard } from './guards/reject-auth-guard.guard';
         HttpClientModule,
         MatButtonModule,
         AuthModule,
+        SharedModule,
     ],
-    providers: [AccessAuthGuard, RejectAuthGuardGuard],
+    providers: [
+        AccessAuthGuard,
+        RejectAuthGuardGuard,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HandleErrorsInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthenticationInterceptor,
+            multi: true,
+        }
+    ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

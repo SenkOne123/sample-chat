@@ -1,7 +1,26 @@
-<div class="sign-up-form">
-    <form [formGroup]="signUpForm">
-        <input formControlName="email" class="sign-up-form__controls">
-        <input formControlName="username" class="sign-up-form__controls">
-        <input formControlName="password" class="sign-up-form__controls">
-    </form>
-</div>
+<form class="form" [formGroup]="signUpForm">
+    <mat-form-field appearance="outline" class="form__control">
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput placeholder="Enter your email...">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form__control">
+        <mat-label>Username</mat-label>
+        <input type="text" formControlName="username" matInput placeholder="Enter your username...">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form__control">
+        <mat-label>Password</mat-label>
+        <input type="password" formControlName="password" matInput placeholder="Enter your password...">
+    </mat-form-field>
+    <a class="login-label__link" [routerLink]="'/auth/login'">
+        I already have an account.
+    </a>
+    <button
+        (click)="onButtonSubmit()"
+        class="form__submit-button"
+        mat-raised-button
+        color="primary"
+        type="submit"
+    >
+        Sign up
+    </button>
+</form>

@@ -1,5 +1,20 @@
-.sign-up-form {
+.form {
+    margin-top: 3rem;
     width: 100%;
-    height: 100vh;
-    background: linear-gradient(243.18deg, #FDC5C5 25.45%, rgba(242, 152, 222, 0) 100%), linear-gradient(243.43deg, #FFA5A5 32.96%, rgba(255, 255, 255, 0) 82.03%), #F39494;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__control {
+    width: 100%;
+}
+
+.form__submit-button {
+    margin-top: 2rem;
+    width: 100%;
+    height: 50px;
+}
+
+.login-label__link {
 }

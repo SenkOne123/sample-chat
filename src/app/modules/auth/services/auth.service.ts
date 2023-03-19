@@ -11,10 +11,11 @@ import { environment } from '../../../../environments/environment';
     providedIn: 'root'
 })
 export class AuthService {
-    public user$ = new BehaviorSubject<User | null>(null);
     public token$ = new BehaviorSubject<Token | null>(null);
 
-    private baseUrl = '/auth/login'
+    private usersUrl = '/users'
+    private loginUrl = '/auth/login';
+    private registerUrl = '/auth/registration';
 
     constructor(private http: HttpClient) {
     }
@@ -24,12 +25,23 @@ export class AuthService {
         return !!token;
     }
 
+    public logOut() {
+        localStorage.removeItem('sample-chat-user');
+    }
+
     public login(loginData: LoginData): Observable<Token> {
-        return this.http.post<Token>(`${environment.apiUrl}${this.baseUrl}`, loginData)
+        return this.http.post<Token>(`${environment.apiUrl}${this.loginUrl}`, loginData)
             .pipe(
                 catchError(err => of(err)),
                 filter(token => !!token.token),
                 tap((token) => this.setSession(token)),
+            );
+    }
+
+    public register(registrationData: RegistrationData): Observable<Token> {
+        return this.http.post<Token>(`${environment.apiUrl}${this.registerUrl}`, registrationData)
+            .pipe(
+                tap(this.setSession),
             );
     }
 
@@ -38,14 +50,7 @@ export class AuthService {
         this.token$.next(token);
     }
 
-    public logOut() {
-        localStorage.removeItem('sample-chat-user');
-    }
-
-    public register(registrationData: RegistrationData): Observable<Token> {
-        return this.http.post<Token>(`${environment.apiUrl}${this.baseUrl}`, registrationData)
-            .pipe(
-                tap(this.setSession),
-            );
+    public getUsers(): Observable<User[]> {
+        return this.http.get<User[]>(this.usersUrl);
     }
 }

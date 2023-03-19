@@ -1,0 +1,27 @@
+<div class="error-modal">
+    <div class="error-modal__header header">
+        <div class="header__left"></div>
+        <div class="header__right">
+            <mat-icon (click)="onCloseModal()" class="header__close-icon">close</mat-icon>
+        </div>
+    </div>
+    <div class="error-modal__error-data error-data">
+        <div class="error-data__error-code">
+            <mat-icon class="error-data__icon">block</mat-icon>
+            <br />
+            <mat-label class="error-data__status-code">Error #{{ error.statusCode }}</mat-label>
+        </div>
+        <div class="error-data__description">
+            {{ error.message }}
+        </div>
+    </div>
+    <button
+        (click)="onCloseModal()"
+        class="error-modal__ok-button"
+        mat-raised-button
+        color="primary"
+        type="submit"
+    >
+        Ok
+    </button>
+</div>
