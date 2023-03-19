@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "http://localhost:5000",
+        "target": "https://sample-chat-app-8p8g.vercel.app",
         "secure": false,
         "pathRewrite": {"^/api" : ""}
     }
