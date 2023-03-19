@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://sample-chat-app-production.up.railway.app:7575",
+        "target": "https://sample-chat-app-production.up.railway.app",
         "secure": false,
         "pathRewrite": {"^/api" : ""}
     }
