@@ -1,7 +1,9 @@
 {
     "/api": {
-        "target": "https://sample-chat-app-production.up.railway.app/",
+        "target": "https://sample-chat-app-production.up.railway.app",
         "secure": false,
-        "pathRewrite": {"^/api" : ""}
+        "pathRewrite": {"^/api" : ""},
+        "logLevel": "debug",
+        "changeOrigin": true
     }
 }
